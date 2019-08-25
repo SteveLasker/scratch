@@ -49,7 +49,7 @@
           "examples": [
             "Unknown type"
           ],
-          "minLength": 5,
+          "minLength": 3,
           "maxLength": 30
         }
       }
@@ -82,7 +82,7 @@
             "Unknown type"
           ],
           "minLength": 5,
-          "maxLength": 30
+          "maxLength": 255
         }
       }
     },
@@ -139,7 +139,7 @@
                 "$id": "#/properties/tools/items/properties/title/items/properties/title",
                 "type": "string",
                 "description": "Localized name of the tool, displayed for human consumption.",
-                "minLength": 5,
+                "minLength": 3,
                 "maxLength": 30
               }
             }
