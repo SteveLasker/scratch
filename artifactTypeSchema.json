@@ -100,7 +100,7 @@
     },
     "tools": {
       "$id": "#/properties/tools",
-      "type": "object",
+      "type": "array",
       "description": "Provides a collection of tools that may be used with artifact type.",
       "items": {
         "$id": "#/properties/tools/items",
