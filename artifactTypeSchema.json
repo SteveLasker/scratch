@@ -22,7 +22,7 @@
     },
     "title": {
       "$id": "#/properties/title",
-      "type": "array",
+      "type": "object",
       "description": "Collection of localized titles, which may be displayed in registry and tool artifact listing.",
       "items": {
         "$id": "#/properties/title/items",
