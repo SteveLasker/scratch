@@ -159,22 +159,15 @@
       "description": "Represents one or more layer mediaTypes, defined by the artifact.",
       "items": {
         "$id": "#/properties/layerMediaTypes/items",
-        "type": "object",
-        "required": [
-          "mediaType"
-        ],
-        "properties": {
-          "mediaType": {
-            "$id": "#/properties/layerMediaTypes/items/properties/mediaType",
-            "type": "string",
-            "default": "application/vnd.oci.unknown.layer.v1.tar",
-            "examples": [
-              "application/vnd.oci.unknown.layer.v1.tar"
-            ],
-            "minLength": 35,
-            "maxLength": 100
-          }
-        }
+        "type": "string",
+        "default": "application/vnd.oci.unknown.layer.v1.tar",
+        "examples": [
+          "application/vnd.oci.unknown.layer.v1.bin",
+          "application/vnd.oci.unknown.layer.v1.json",
+          "application/vnd.oci.unknown.layer.v1.tar",
+          "application/vnd.oci.unknown.layer.v1.txt",
+          "application/vnd.oci.unknown.layer.v1.yaml"
+        ]
       }
     }
   }
