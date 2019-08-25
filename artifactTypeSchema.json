@@ -60,7 +60,7 @@
       "description": "Provides a short description of the type for human consumption.",
       "required": [
         "locale",
-        "title"
+        "description"
       ],
       "properties": {
         "locale": {
