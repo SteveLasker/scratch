@@ -1,5 +1,6 @@
 {
   "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "title": "The Root Schema",
   "required": [
@@ -24,74 +25,64 @@
       "$id": "#/properties/title",
       "type": "object",
       "description": "Collection of localized titles, which may be displayed in registry and tool artifact listing.",
-      "items": {
-        "$id": "#/properties/title/items",
-        "type": "object",
-        "description": "Collection of localized titles, which may be displayed in registry and tool artifact listing.",
-        "required": [
-          "locale",
-          "title"
-        ],
-        "properties": {
-          "locale": {
-            "$id": "#/properties/title/items/properties/locale",
-            "type": "string",
-            "description": "language-locale ISO code",
-            "default": "en-US",
-            "examples": [
-              "en-US"
-            ],
-            "minLength": 5,
-            "maxLength": 5
-          },
-          "title": {
-            "$id": "#/properties/title/items/properties/title",
-            "type": "string",
-            "description": "Localized title of the artifact type.",
-            "default": "",
-            "examples": [
-              "Unknown type"
-            ],
-            "minLength": 5,
-            "maxLength": 30
-          }
+      "required": [
+        "locale",
+        "title"
+      ],
+      "properties": {
+        "locale": {
+          "$id": "#/properties/title/items/properties/locale",
+          "type": "string",
+          "description": "language-locale ISO code",
+          "default": "en-US",
+          "examples": [
+            "en-US"
+          ],
+          "minLength": 5,
+          "maxLength": 5
+        },
+        "title": {
+          "$id": "#/properties/title/items/properties/title",
+          "type": "string",
+          "description": "Localized title of the artifact type.",
+          "default": "",
+          "examples": [
+            "Unknown type"
+          ],
+          "minLength": 5,
+          "maxLength": 30
         }
       }
     },
     "description": {
       "$id": "#/properties/description",
-      "type": "array",
+      "type": "object",
       "description": "Provides a short description of the type for human consumption.",
-      "items": {
-        "$id": "#/properties/description/items",
-        "type": "object",
-        "title": "The Items Schema",
-        "required": [
-          "locale",
-          "description"
-        ],
-        "properties": {
-          "locale": {
-            "$id": "#/properties/description/items/properties/locale",
-            "type": "string",
-            "description": "language-locale ISO code",
-            "default": "en-US",
-            "examples": [
-              "en-US"
-            ],
-            "minLength": 5,
-            "maxLength": 5
-          },
-          "description": {
-            "$id": "#/properties/description/items/properties/description",
-            "type": "string",
-            "description": "Localized description of the artifact type.",
-            "examples": [
-              "An unknown type to be described"
-            ],
-            "minLength": 5,
-            "maxLength": 255
-          }
+      "required": [
+        "locale",
+        "title"
+      ],
+      "properties": {
+        "locale": {
+          "$id": "#/properties/title/properties/locale",
+          "type": "string",
+          "description": "language-locale ISO code",
+          "default": "en-US",
+          "examples": [
+            "en-US"
+          ],
+          "minLength": 5,
+          "maxLength": 5
+        },
+        "description": {
+          "$id": "#/properties/description/properties/description",
+          "type": "string",
+          "description": "Localized description of the artifact type.",
+          "examples": [
+            "Unknown type"
+          ],
+          "minLength": 5,
+          "maxLength": 30
         }
       }
     },
@@ -109,7 +100,7 @@
     },
     "tools": {
       "$id": "#/properties/tools",
-      "type": "array",
+      "type": "object",
       "description": "Provides a collection of tools that may be used with artifact type.",
       "items": {
         "$id": "#/properties/tools/items",
@@ -126,34 +117,30 @@
           },
           "title": {
             "$id": "#/properties/tools/items/properties/title",
-            "type": "array",
+            "type": "object",
             "description": "Represents the name of the tool, displayed for human consumption.",
-            "items": {
-              "$id": "#/properties/tools/items/properties/title/items",
-              "type": "object",
-              "required": [
-                "locale",
-                "title"
-              ],
-              "properties": {
-                "locale": {
-                  "$id": "#/properties/tools/items/properties/title/items/properties/locale",
-                  "type": "string",
-                  "description": "language-locale ISO code",
-                  "default": "en-US",
-                  "examples": [
-                    "en-US"
-                  ],
-                  "minLength": 5,
-                  "maxLength": 5
-                },
-                "title": {
-                  "$id": "#/properties/tools/items/properties/title/items/properties/title",
-                  "type": "string",
-                  "description": "Localized name of the tool, displayed for human consumption.",
-                  "minLength": 5,
-                  "maxLength": 30
-                }
+            "required": [
+              "locale",
+              "title"
+            ],
+            "properties": {
+              "locale": {
+                "$id": "#/properties/tools/items/properties/title/items/properties/locale",
+                "type": "string",
+                "description": "language-locale ISO code",
+                "default": "en-US",
+                "examples": [
+                  "en-US"
+                ],
+                "minLength": 5,
+                "maxLength": 5
+              },
+              "title": {
+                "$id": "#/properties/tools/items/properties/title/items/properties/title",
+                "type": "string",
+                "description": "Localized name of the tool, displayed for human consumption.",
+                "minLength": 5,
+                "maxLength": 30
               }
             }
           }
@@ -186,9 +173,9 @@
             ],
             "minLength": 35,
             "maxLength": 100
+          }
         }
       }
     }
   }
-}
 }
