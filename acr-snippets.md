@@ -7,7 +7,10 @@ A collection of snippets I find useful.
 ```bash
 az configure --defaults acr=demo42
 export RESOURCE_ID=$(az acr show --query id -o tsv)
-az rest --method patch --uri "$RESOURCE_ID?api-version=2019-12-01-preview" --body "{ \"properties\":{\"dataEndpointEnabled\":true}}" -o json
+az rest --method patch \
+  --uri "$RESOURCE_ID?api-version=2019-12-01-preview" \
+  --body "{ \"properties\":{\"dataEndpointEnabled\":true}}" \
+  -o json
 ```
 
 Look for:
