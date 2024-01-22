@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: datatrails/scitt-action@v0.2
+        uses: datatrails/scitt-action@v0.3
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
