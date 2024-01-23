@@ -7,9 +7,12 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: datatrails/scitt-action@v0.3
+        uses: datatrails/scitt-action@v0.3.1
         with:
-          who-to-greet: 'Mona the Octocat'
+          scitt-client_id: "my-id"
+          feed: "my-project-v0.1"
+          signed-statement-file: "signed-statement.sbom"
+          scitt-secret: "sssshhhh"
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
