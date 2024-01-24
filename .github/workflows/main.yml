@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Register SCITT Signed Statement
         id: register-scitt-signed-statement
-        uses: datatrails/scitt-action@v0.3.4
+        uses: datatrails/scitt-action@v0.3.5
         with:
           scitt-client_id: ${{ secrets.DATATRAILS_CLIENT_ID }}
           scitt-secret: ${{ secrets.DATATRAILS_SECRET }}
