@@ -9,5 +9,5 @@ jobs:
         shell: bash
         run: |
           echo ${{ github.repository }}
-          echo ${{ github.repository }} + "foo"
-          echo "$github.repository:$github.sha"
+          echo ${{ github.repository }}  "foo"
+          echo ${{ github.repository }} ":" ${{ github.sha  }}
