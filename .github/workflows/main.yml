@@ -8,6 +8,6 @@ jobs:
       - name: test
         shell: bash
         run: |
-          echo ${{ GITHUB_REPOSITORY }}
-          echo ${{ GITHUB_REPOSITORY }} + "foo"
-          echo "$GITHUB_REPOSITORY:$GITHUB_SHA"
+          echo ${{ github.repository }}
+          echo ${{ github.repository }} + "foo"
+          echo "$github.repository:$github.sha"
