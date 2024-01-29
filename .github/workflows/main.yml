@@ -35,7 +35,7 @@ jobs:
       - name: Register as a SCITT Signed Statement
         # Register the Signed Statement wit DataTrails SCITT APIs
         id: register-compliance-scitt-signed-statement
-        uses: datatrails/scitt-action@v0.4
+        uses: datatrails/scitt-action@v0.4.1
         with:
           scitt-client_id: ${{ env.DATATRAILS_CLIENT_ID }}
           scitt-secret: ${{ env.DATATRAILS_SECRET }}
