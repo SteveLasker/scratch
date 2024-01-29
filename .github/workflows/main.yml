@@ -41,6 +41,6 @@ jobs:
           scitt-secret: ${{ env.DATATRAILS_SECRET }}
           feed: ${{ env.FEED }}
           payload: "./buildOutput/attestation.json"
-          content-type: "application/vnd.unknown.attestation+json"
+          content-type: "application/json"
           signing-key-file: "./signingkey.pem"
           issuer: ${{ env.ISSUER}}
