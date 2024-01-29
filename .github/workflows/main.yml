@@ -32,10 +32,11 @@ jobs:
         # A sample compliance file. Replace with an SBOM, in-toto statement, image for content authenticity, ...
         run: |
           echo '{"compliance.42":"true","software.eol":"2025-03-15"}' >> ./buildOutput/attestation.json
+          ls -a
       - name: Register as a SCITT Signed Statement
         # Register the Signed Statement wit DataTrails SCITT APIs
         id: register-compliance-scitt-signed-statement
-        uses: datatrails/scitt-action@v0.4.1
+        uses: datatrails/scitt-action@v0.4.2
         with:
           scitt-client_id: ${{ env.DATATRAILS_CLIENT_ID }}
           scitt-secret: ${{ env.DATATRAILS_SECRET }}
