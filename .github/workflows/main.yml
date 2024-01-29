@@ -1,21 +1,46 @@
-on: [push]
+name: Register SCITT Statement
 
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  DATATRAILS_CLIENT_ID: ${{ secrets.DATATRAILS_CLIENT_ID }}
+  DATATRAILS_SECRET: ${{ secrets.DATATRAILS_SECRET }}
+  SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+  FEED: "synsation.io/myproduct-v1.0"
+  ISSUER: "https://synsation.io"
 jobs:
-  hello_world_job:
+  build-image-register-DataTrails-SCITT:
     runs-on: ubuntu-latest
-    name: Register SCITT Signed Statement
+    # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - name: Register SCITT Signed Statement
-        id: register-scitt-signed-statement
-        uses: datatrails/scitt-action@v0.3.7.3
+      - name: Create buildOutput Directory
+        run: |
+          mkdir -p ./buildOutput/
+      - name: save-keys
+        # This step would be replaced with a remote signing service API call to create the Signed SCITT Statement
+        env:
+          SIGNING_KEY: ${{ env.SIGNING_KEY }}
+        shell: bash
+        run: |
+          echo "$SIGNING_KEY" >> ./signingkey.pem
+      - name: Create Compliance Statement
+        # A sample compliance file. Replace with an SBOM, in-toto statement, image for content authenticity, ...
+        run: |
+          echo '{"compliance.42":"true","software.eol":"2025-03-15"}' >> ./buildOutput/attestation.json
+      - name: Register as a SCITT Signed Statement
+        # Register the Signed Statement wit DataTrails SCITT APIs
+        id: register-compliance-scitt-signed-statement
+        uses: datatrails/scitt-action@v0.4
         with:
-          scitt-client_id: ${{ secrets.DATATRAILS_CLIENT_ID }}
-          scitt-secret: ${{ secrets.DATATRAILS_SECRET }}
-          feed: "my-project-v0.1"
-          signed-statement-file: "signed-statement.sbom"
-          signing-key-file: "synsation.pem"
-          issuer: "synsation.io"
-          output-file: "receipt.cbor"
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          scitt-client_id: ${{ env.DATATRAILS_CLIENT_ID }}
+          scitt-secret: ${{ env.DATATRAILS_SECRET }}
+          feed: ${{ env.FEED }}
+          payload: "./buildOutput/attestation.json"
+          content-type: "application/vnd.unknown.attestation+json"
+          signing-key-file: "./signingkey.pem"
+          issuer: ${{ env.ISSUER}}
